@@ -1,6 +1,6 @@
 import pytest
 from tests import SPARK
-from pyspark_scripts.aggregate import get_aggregated_years
+from pyspark_scripts.aggregate_years import get_aggregated_years
 
 @pytest.fixture(name="df_columns")
 def fixture_columns():
