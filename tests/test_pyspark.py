@@ -2,8 +2,8 @@ import pytest
 from tests import SPARK
 from pyspark_scripts.pyspark_script import get_average_rating
 
-@pytest.fixture
-def df_columns():
+@pytest.fixture(name="df_columns")
+def fixture_columns():
     columns = [
         'id',
         'author',
@@ -21,7 +21,7 @@ def df_columns():
     ]
     return columns
 
-def test_should_return_average_rating(df_columns):
+def test_should_return_average_rating(df_columns) -> None:
 
     test_data = [
         [51,"author1","book1","test_url","test_url",1461,178,1416914285,9.78142E+12,2007,"City of Bones","eng",2.00],
