@@ -53,3 +53,29 @@ def test_should_return_aggregated_years_if_no_params_given(df_columns) -> None:
                 "2000": [result3, result4]}
 
     assert actual == expected
+
+def test_should_return_json_by_years(df_columns) -> None:
+
+    test_data = [
+        [51,"author1","book1","test_url","test_url",1461,178,1416914285,9.78142E+12,1970,"City of Bones","eng",2.00],
+        [53,"author2","book2","test_url","test_url",1461,178,1416914285,9.78142E+12,1970,"City of Bones","eng",3.00],
+        [54,"author3","book3","test_url","test_url",1461,178,1416914285,9.78142E+12,2000,"City of Bones","eng",4.00],
+        [55,"author3","book3","test_url","test_url",1461,178,1416914285,9.78142E+12,2000,"City of Bones","eng",4.00]
+            ]
+
+    test_dataframe = SPARK.createDataFrame(test_data, df_columns)
+
+    actual = get_aggregated_years(test_dataframe, year=1970)
+
+    result1 = {}
+    result2 = {}
+    expected_data1 = test_data[0]
+    expected_data2 = test_data[1]
+
+    for i, col in enumerate(df_columns):
+        result1[col] = expected_data1[i]
+        result2[col] = expected_data2[i]
+
+    expected = {"1970": [result1, result2]}
+
+    assert actual == expected
