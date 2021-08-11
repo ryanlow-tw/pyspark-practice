@@ -3,10 +3,10 @@ import ast
 def get_aggregated_authors(spark_dataframe, author=None) -> dict:
 
     if author is not None:
-        # books = get_books_by_year(spark_dataframe, year)
-        # result = {str(year): [ast.literal_eval(b) for b in books]}
+        books = get_books_by_author(spark_dataframe, author)
+        result = {author: [ast.literal_eval(b) for b in books]}
 
-        return ""
+        return result
     
     unique_authors = get_unique_authors(spark_dataframe)
     
