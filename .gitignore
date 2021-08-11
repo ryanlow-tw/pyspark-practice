@@ -6,3 +6,4 @@ data/
 build/
 dist/
 test_sparksubmit.egg-info/
+spark-3.1.2-bin-hadoop3.2/
