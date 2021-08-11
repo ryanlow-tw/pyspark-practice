@@ -65,7 +65,7 @@ def test_should_return_json_by_author(df_columns) -> None:
 
     test_dataframe = SPARK.createDataFrame(test_data, df_columns)
 
-    actual = get_aggregated_authors(test_dataframe)
+    actual = get_aggregated_authors(test_dataframe, "author1")
 
     result1 = {}
     result2 = {}
