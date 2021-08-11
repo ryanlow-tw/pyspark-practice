@@ -54,7 +54,7 @@ def test_should_return_aggregated_years_if_no_params_given(df_columns) -> None:
 
     assert actual == expected
 
-def test_should_return_json_by_years(df_columns) -> None:
+def test_should_return_json_by_year(df_columns) -> None:
 
     test_data = [
         [51,"author1","book1","test_url","test_url",1461,178,1416914285,9.78142E+12,1970,"City of Bones","eng",2.00],
