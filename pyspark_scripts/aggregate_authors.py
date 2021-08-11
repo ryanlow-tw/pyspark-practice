@@ -1,5 +1,4 @@
 import ast
-import logging
 
 
 def get_aggregated_authors(spark_dataframe, author=None) -> dict:
