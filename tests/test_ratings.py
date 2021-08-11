@@ -33,7 +33,7 @@ def test_should_return_average_rating(df_columns) -> None:
 
     actual = get_formatted_average_rating(test_dataframe)
 
-    expected = {"mean": 3.00}
+    expected = {"mean": "3.00"}
 
     assert actual == expected
 
@@ -50,7 +50,7 @@ def test_should_return_average_rating_format_to_2dp(df_columns) -> None:
 
     actual = get_formatted_average_rating(test_dataframe)
 
-    expected = {"mean": 4.22}
+    expected = {"mean": "4.22"}
 
     assert actual == expected
 
