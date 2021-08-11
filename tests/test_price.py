@@ -68,7 +68,7 @@ def test_should_return_list_of_books_within_price_range(df_columns) -> None:
         result1[col] = expected_data1[i]
         result2[col] = expected_data2[i]
 
-    actual = get_books_within_range(test_dataframe, min=1000, max=2000)
+    actual = get_books_within_range(test_dataframe, min_val=1000, max_val=2000)
 
     expected = {"books": [result1, result2]}
 
