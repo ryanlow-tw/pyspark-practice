@@ -1,5 +1,6 @@
 import pytest
 from tests import SPARK
+from pyspark_scripts.aggregate_authors import get_aggregated_authors
 
 @pytest.fixture(name="df_columns")
 def fixture_columns():
