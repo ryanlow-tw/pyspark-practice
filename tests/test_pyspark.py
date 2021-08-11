@@ -54,7 +54,7 @@ def test_should_return_average_rating_format_to_2dp(df_columns) -> None:
 
     assert actual == expected
 
-def test_should_return_one_highly_rated_books(df_columns) -> None:
+def test_should_return_one_highly_rated_book(df_columns) -> None:
 
     test_data = [
         [51,"author1","low_rated_book1","test_url","test_url",1461,178,"1416914285",9.78142E+12,2007,"City of Bones","eng",1.0],
