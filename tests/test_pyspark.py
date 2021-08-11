@@ -54,12 +54,12 @@ def test_should_return_average_rating_format_to_2dp(df_columns) -> None:
 
     assert actual == expected
 
-def test_should_return_highly_rated_books(df_columns) -> None:
+def test_should_return_one_highly_rated_books(df_columns) -> None:
 
     test_data = [
-        [51,"author1","low_rated_book1","test_url","test_url",1461,178,1416914285,9.78142E+12,2007,"City of Bones","eng",1.0],
-        [53,"author2","low_rated_book2","test_url","test_url",1461,178,1416914285,9.78142E+12,2007,"City of Bones","eng",2.0],
-        [54,"author3","high_rated_book3","test_url","test_url",1461,178,1416914285,9.78142E+12,2007,"City of Bones","eng",5.0]
+        [51,"author1","low_rated_book1","test_url","test_url",1461,178,"1416914285",9.78142E+12,2007,"City of Bones","eng",1.0],
+        [53,"author2","low_rated_book2","test_url","test_url",1461,178,"1416914285",9.78142E+12,2007,"City of Bones","eng",2.0],
+        [54,"author3","high_rated_book3","test_url","test_url",1461,178,"1416914285",9.78142E+12,2007,"City of Bones","eng",5.0]
             ]
 
     test_dataframe = SPARK.createDataFrame(test_data, df_columns)
@@ -67,18 +67,11 @@ def test_should_return_highly_rated_books(df_columns) -> None:
     actual = get_highly_rated_books(test_dataframe)
 
     result = {}
-    expected_data = [54,"author3","high_rated_book3","test_url","test_url",1461,178,1416914285,9.78142E+12,2007,"City of Bones","eng",5.0]
+    expected_data = test_data[2]
 
     for i, col in enumerate(df_columns):
         result[col] = expected_data[i]
 
-    expected = {"result":result}
+    expected = {"highly_rated":[result]}
 
     assert actual == expected
-
-
-
-
-
-
-
