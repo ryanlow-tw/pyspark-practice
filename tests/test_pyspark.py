@@ -1,6 +1,6 @@
 import pytest
 from tests import SPARK
-from pyspark_scripts.pyspark_script import get_average_rating
+from pyspark_scripts.pyspark_script import get_average_rating, get_highly_rated_books
 
 @pytest.fixture(name="df_columns")
 def fixture_columns():
@@ -66,11 +66,13 @@ def test_should_return_highly_rated_books(df_columns) -> None:
 
     actual = get_highly_rated_books(test_dataframe)
 
-    expected = {}
+    result = {}
     expected_data = [54,"author3","high_rated_book3","test_url","test_url",1461,178,1416914285,9.78142E+12,2007,"City of Bones","eng",5.0]
 
-    for i in range(len(df_columns)):
-        expected[df_columns[i]] = expected_data[i]
+    for i, col in enumerate(df_columns):
+        result[col] = expected_data[i]
+
+    expected = {"result":result}
 
     assert actual == expected
 
