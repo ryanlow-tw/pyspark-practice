@@ -1,6 +1,6 @@
 import pytest
 from tests import SPARK
-from pyspark_scripts.pyspark_script import get_average_rating, get_highly_rated_books, get_less_rated_books
+from pyspark_scripts.pyspark_script import get_formatted_average_rating, get_highly_rated_books, get_less_rated_books
 
 @pytest.fixture(name="df_columns")
 def fixture_columns():
@@ -31,9 +31,9 @@ def test_should_return_average_rating(df_columns) -> None:
 
     test_dataframe = SPARK.createDataFrame(test_data, df_columns)
 
-    actual = get_average_rating(test_dataframe)
+    actual = get_formatted_average_rating(test_dataframe)
 
-    expected = 3.00
+    expected = {"mean": 3.00}
 
     assert actual == expected
 
@@ -48,9 +48,9 @@ def test_should_return_average_rating_format_to_2dp(df_columns) -> None:
 
     test_dataframe = SPARK.createDataFrame(test_data, df_columns)
 
-    actual = get_average_rating(test_dataframe)
+    actual = get_formatted_average_rating(test_dataframe)
 
-    expected = 4.22
+    expected = {"mean": 4.22}
 
     assert actual == expected
 

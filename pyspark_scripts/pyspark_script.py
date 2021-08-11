@@ -23,3 +23,9 @@ def get_less_rated_books(spark_dataframe) -> dict:
 
     return {"less_rated": [ast.literal_eval(r) for r in result]}
 
+def get_formatted_average_rating(spark_dataframe):
+
+    average_rating = get_average_rating(spark_dataframe)
+
+    return {"mean": average_rating}
+
