@@ -3,3 +3,6 @@ notebooks/
 data/
 *.pyc
 .vscode/
+build/
+dist/
+test_sparksubmit.egg-info/
