@@ -24,7 +24,6 @@ if __name__ == '__main__':
     analytics.run(spark, input_path)
     logging.info("Application Done: %s", spark.sparkContext.appName)
     spark.stop()
-    sc.stop()
 
 
 

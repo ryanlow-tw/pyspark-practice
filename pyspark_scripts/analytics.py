@@ -33,4 +33,3 @@ def run(spark: SparkSession, input_path: str) -> None:
     print("=======================================================")
     print(get_aggregated_years(input_df, 1980))
     print("=======================================================")
-    spark.stop()
