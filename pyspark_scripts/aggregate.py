@@ -2,7 +2,14 @@ import ast
 
 def get_aggregated_years(spark_dataframe, year=None):
     if year is not None:
-        return ""
+        
+        books = spark_dataframe.filter(
+            spark_dataframe["original_publication_year"] == year
+                ).toJSON().collect()
+
+        result = {str(year): [ast.literal_eval(b) for b in books]}
+
+        return result
     
     unique_years = get_unique_years(spark_dataframe)
     
