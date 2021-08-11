@@ -1,4 +1,6 @@
 import ast
+import logging
+
 
 def get_aggregated_authors(spark_dataframe, author=None) -> dict:
 
@@ -20,19 +22,14 @@ def get_aggregated_authors(spark_dataframe, author=None) -> dict:
 
 def get_unique_authors(spark_dataframe) -> list:
 
-    num_unique = len(spark_dataframe.select(
-        "author"
-            ).distinct().orderBy("author").collect())
 
-    results = []
-
-    for i in range(num_unique):
-        unique_year = str(spark_dataframe.select(
+    unique_authors = spark_dataframe.select(
             "author"
-            ).distinct().orderBy("author").collect()[i][0])
-        results.append(unique_year)
-    
-    return results
+            ).distinct().orderBy("author").collect()
+
+    num_unique = len(unique_authors)
+
+    return [unique_authors[i][0] for i in range(num_unique)]
 
 def get_books_by_author(spark_dataframe, author) -> list:
     books = spark_dataframe.filter(

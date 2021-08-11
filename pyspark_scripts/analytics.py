@@ -9,19 +9,11 @@ from pyspark_scripts.ratings import get_formatted_average_rating
 from pyspark_scripts.ratings import get_less_rated_books, get_highly_rated_books
 
 def run(spark: SparkSession, input_path: str) -> None:
-    logging.info("Reading text file from %sinput_path", input_path)
+    logging.info("Reading text file from %s", input_path)
     input_df = spark.read.option("inferSchema", "true") \
         .option("header", "true") \
         .csv(input_path)
 
-    print("=======================================================")
-    print(get_aggregated_authors(input_df))
-    print("=======================================================")
-    print(get_aggregated_authors(input_df, author="Tom Clancy"))
-    print("=======================================================")
-    print(get_aggregated_years(input_df))
-    print("=======================================================")
-    print(get_aggregated_years(input_df, 1980))
     print("=======================================================")
     print(get_max_revenue(input_df))
     print("=======================================================")
@@ -33,3 +25,12 @@ def run(spark: SparkSession, input_path: str) -> None:
     print("=======================================================")
     print(get_highly_rated_books(input_df))
     print("=======================================================")
+    print(get_aggregated_authors(input_df))
+    print("=======================================================")
+    print(get_aggregated_authors(input_df, author="Tom Clancy"))
+    print("=======================================================")
+    print(get_aggregated_years(input_df))
+    print("=======================================================")
+    print(get_aggregated_years(input_df, 1980))
+    print("=======================================================")
+    spark.stop()

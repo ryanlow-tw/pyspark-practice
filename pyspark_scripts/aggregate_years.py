@@ -20,19 +20,14 @@ def get_aggregated_years(spark_dataframe, year=None) -> dict:
 
 def get_unique_years(spark_dataframe) -> list:
 
-    num_unique = len(spark_dataframe.select(
+    unique_years = spark_dataframe.select(
         "original_publication_year"
-            ).distinct().orderBy("original_publication_year").collect())
+            ).distinct().orderBy("original_publication_year").collect()
 
-    results = []
+    num_unique = len(unique_years)
 
-    for i in range(num_unique):
-        unique_year = str(spark_dataframe.select(
-            "original_publication_year"
-            ).distinct().orderBy("original_publication_year").collect()[i][0])
-        results.append(unique_year)
+    return [str(unique_years[i][0]) for i in range(num_unique)]
     
-    return results
 
 def get_books_by_year(spark_dataframe, year) -> list:
     books = spark_dataframe.filter(
