@@ -15,3 +15,11 @@ def get_highly_rated_books(spark_dataframe) -> dict:
 
     return {"highly_rated": [ast.literal_eval(r) for r in result]}
 
+def get_less_rated_books(spark_dataframe) -> dict:
+    
+
+    average_rating = get_average_rating(spark_dataframe)
+    result = spark_dataframe.filter(spark_dataframe["average_rating"] < average_rating).toJSON().collect()
+
+    return {"less_rated": [ast.literal_eval(r) for r in result]}
+

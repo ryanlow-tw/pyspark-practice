@@ -1,6 +1,6 @@
 import pytest
 from tests import SPARK
-from pyspark_scripts.pyspark_script import get_average_rating, get_highly_rated_books
+from pyspark_scripts.pyspark_script import get_average_rating, get_highly_rated_books, get_less_rated_books
 
 @pytest.fixture(name="df_columns")
 def fixture_columns():
@@ -123,3 +123,4 @@ def test_should_return_one_less_rated_book(df_columns) -> None:
     expected = {"less_rated":[result]}
 
     assert actual == expected
+
