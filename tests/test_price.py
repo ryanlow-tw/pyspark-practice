@@ -21,7 +21,7 @@ def fixture_columns():
     ]
     return columns
 
-def test_should(df_columns) -> None:
+def test_should_return_max_revenue(df_columns) -> None:
 
     test_data = [
         [51,"author1","book1","test_url","test_url",1000,100,1416914285,9.78142E+12,2007,"City of Bones","eng",2.00],
@@ -32,6 +32,6 @@ def test_should(df_columns) -> None:
     test_dataframe = SPARK.createDataFrame(test_data, df_columns)
 
     actual = get_max_revenue(test_dataframe)
-    expected = 3 * 1000 * 100
+    expected = {"sum": f"{(3 * 1000 * 100.00):.2f}"}
 
     assert actual == expected
