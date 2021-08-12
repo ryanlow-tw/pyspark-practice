@@ -49,9 +49,12 @@ def test_should_return_aggregated_authors_if_no_params_given(df_columns) -> None
         result3[col] = expected_data3[i]
         result4[col] = expected_data4[i]
 
-    expected = {"author1": [result1, result2],
-                "author2": [result3, result4]}
-
+    expected = [
+        {"author": "author1",
+        "book_details": [result1, result2]},
+        {"author": "author2",
+        "book_details": [result3, result4]},
+    ]
     assert actual == expected
 
 def test_should_return_json_by_author(df_columns) -> None:
@@ -76,6 +79,9 @@ def test_should_return_json_by_author(df_columns) -> None:
         result1[col] = expected_data1[i]
         result2[col] = expected_data2[i]
 
-    expected = {"author1": [result1, result2]}
+    expected = [
+        {"author": "author1",
+        "book_details": [result1, result2]}
+    ]
 
     assert actual == expected
