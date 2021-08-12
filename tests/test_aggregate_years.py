@@ -49,8 +49,10 @@ def test_should_return_aggregated_years_if_no_params_given(df_columns) -> None:
         result3[col] = expected_data3[i]
         result4[col] = expected_data4[i]
 
-    expected = {"1970": [result1, result2],
-                "2000": [result3, result4]}
+    expected = [{"original_publication_year": 1970,
+                "book_details": [result1, result2]},
+                {"original_publication_year": 2000,
+                "book_details": [result3, result4]}]
 
     assert actual == expected
 
@@ -76,6 +78,7 @@ def test_should_return_json_by_year(df_columns) -> None:
         result1[col] = expected_data1[i]
         result2[col] = expected_data2[i]
 
-    expected = {"1970": [result1, result2]}
+    expected = [{"original_publication_year": 1970,
+                "book_details": [result1, result2]}]
 
     assert actual == expected
