@@ -1,10 +1,12 @@
-This is an attempt to practice manipulating data in pyspark
+This is an attempt to pyspark
 
 to activate venv
 
 ```bash
 source venv/bin/activate
 ```
+
+to submit spark job
 
 ```bash
 spark-submit \
@@ -13,6 +15,8 @@ spark-submit \
     run_book_analytics.py \
     data/books3000.csv
 ```
+
+to lay the egg
 
 ```bash
 python setup.py bdist_egg
