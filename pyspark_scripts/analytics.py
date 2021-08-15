@@ -2,10 +2,8 @@ import logging
 
 from pyspark.sql import SparkSession
 
-from pyspark_scripts.aggregate_authors import get_aggregated_authors
-from pyspark_scripts.aggregate_years import get_aggregated_years
+from pyspark_scripts.aggregate import get_aggregated_data
 from pyspark_scripts.price import get_max_revenue, get_books_within_range
-from pyspark_scripts.ratings import get_formatted_average_rating
 from pyspark_scripts.ratings import get_less_rated_books, get_highly_rated_books
 
 def run(spark: SparkSession, input_path: str) -> None:
@@ -14,22 +12,20 @@ def run(spark: SparkSession, input_path: str) -> None:
         .option("header", "true") \
         .csv(input_path)
 
-    print("=======================================================")
-    print(get_max_revenue(input_df))
-    print("=======================================================")
-    print(get_books_within_range(input_df, min_val=1000, max_val=2000))
-    print("=======================================================")
-    print(get_formatted_average_rating(input_df))
-    print("=======================================================")
-    print(get_less_rated_books(input_df))
-    print("=======================================================")
-    print(get_highly_rated_books(input_df))
-    print("=======================================================")
-    print(get_aggregated_authors(input_df))
-    print("=======================================================")
-    print(get_aggregated_authors(input_df, author="Tom Clancy"))
-    print("=======================================================")
-    print(get_aggregated_years(input_df))
-    print("=======================================================")
-    print(get_aggregated_years(input_df, 1980))
-    print("=======================================================")
+    logging.info("Logging get_max_revenue...")
+    logging.info(get_max_revenue(input_df))
+    logging.info("Logging get_books_within_range...")
+    logging.info(get_books_within_range(input_df, min_val=1000, max_val=2000))
+    logging.info("Logging get_less_rated_books...")
+    logging.info(get_less_rated_books(input_df))
+    logging.info("Logging get_highly_rated_books...")
+    logging.info(get_highly_rated_books(input_df))
+    logging.info("Logging get_aggregated_authors")
+    logging.info(get_aggregated_data(input_df, column='author'))
+    logging.info("Logging get_aggregated_authors Tom Clancy...")
+    logging.info(get_aggregated_data(input_df, column='author', value="Tom Clancy"))
+    logging.info("Logging get_aggregated_years...")
+    logging.info(get_aggregated_data(input_df, column='original_publication_year'))
+    logging.info("Logging get_aggregated_years... 1980")
+    logging.info(get_aggregated_data(input_df, column='original_publication_year', value=1980))
+    
