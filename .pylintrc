@@ -2,4 +2,5 @@
 disable=
     C0114, # missing-module-docstring
     C0116, # missing function docstring
-    E0401  # ignore import error
+    E0401,  # ignore import error
+    C0303   #ignore trailing whitespace
