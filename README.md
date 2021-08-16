@@ -13,7 +13,7 @@ spark-submit \
     --master local \
     --py-files dist/test_sparksubmit-0.1-py3.9.egg \
     run_book_analytics.py \
-    data/books3000.csv
+    <FILE_INPUT_PATH>
 ```
 
 to lay the egg
