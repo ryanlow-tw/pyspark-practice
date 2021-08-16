@@ -6,6 +6,14 @@ to activate venv
 source venv/bin/activate
 ```
 
+to run tests
+
+from the root folder
+
+```bash
+pytest
+```
+
 to submit spark job
 
 ```bash
