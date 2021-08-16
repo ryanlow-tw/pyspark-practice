@@ -5,8 +5,8 @@ def get_aggregated_data(spark_dataframe, column, value=None) -> dict:
 
     if value is not None:
         filtered_dataframe = spark_dataframe.filter(
-            spark_dataframe[column] == value
-            )
+            spark_dataframe[column] == value)
+
         result = _get_book_details_by_data(filtered_dataframe, column)
         return [ast.literal_eval(r) for r in result]
 
