@@ -3,7 +3,9 @@ from pyspark.sql import functions as f
 
 
 def get_average_rating(spark_dataframe) -> float:
-    average_rating = spark_dataframe.select(f.avg("average_rating")).collect()[0][0]
+    average_rating = spark_dataframe.select(
+        f.avg("average_rating").alias("avg_rating")
+        ).first().avg_rating
 
     return round(average_rating, 2)
 
